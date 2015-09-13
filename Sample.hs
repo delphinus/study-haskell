@@ -29,3 +29,6 @@ fib :: Int -> Int
 fib 0 = 1
 fib 1 = 1
 fib n = fib (n-1) + fib (n-2)
+
+segments :: [a] -> [[a]]
+segments = foldr (++) [] . scanr (\a b -> [a] : map (a:) b) []
