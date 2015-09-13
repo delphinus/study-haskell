@@ -32,3 +32,6 @@ fib n = fib (n-1) + fib (n-2)
 
 segments :: [a] -> [[a]]
 segments = foldr (++) [] . scanr (\a b -> [a] : map (a:) b) []
+
+sort [] = []
+sort (x:xs) = sort [ a | a <- xs, a < x ] ++ x : sort [ a | a <- xs, x <= a]
