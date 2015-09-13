@@ -15,3 +15,12 @@ caseOfFirstLetter str =
                 else if 'A' <= x && x <= 'Z'
                   then "upper"
                   else "other"
+
+caseOfFirstLetter' :: String -> String
+caseOfFirstLetter' "" = "empty"
+caseOfFirstLetter' (x:xs)
+  | inRange 'a' 'z' = "lower"
+  | inRange 'A' 'Z' = "upper"
+  | otherwise       = "other"
+  where
+    inRange lower upper = lower <= x && x <= upper
