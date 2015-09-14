@@ -35,3 +35,15 @@ segments = foldr (++) [] . scanr (\a b -> [a] : map (a:) b) []
 
 sort [] = []
 sort (x:xs) = sort [ a | a <- xs, a < x ] ++ x : sort [ a | a <- xs, x <= a]
+
+goodSumWithNext :: Num c => [c] -> [c]
+goodSumWithNext xs = zipWith (+) xs (tail xs)
+
+badSumWithNext :: [Integer] -> [Integer]
+badSumWithNext [] = []
+badSumWithNext (a:b:xs) = a+b : badSumWithNext (b:xs)
+
+appliedHead :: (t -> [a]) -> t -> Maybe a
+appliedHead f x = case f x of
+                    [] -> Nothing
+                    a : _ -> Just a
