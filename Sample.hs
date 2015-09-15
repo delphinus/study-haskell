@@ -49,3 +49,16 @@ appliedHead f x = case f x of
                     a : _ -> Just a
 
 mean' xs = let (res, len) = foldl (\(m, n) x -> (m + x / len, n + 1)) (0, 0) xs in res
+
+class BoolLike a where
+  fromBoolLike :: a -> Bool
+
+instance BoolLike Int where
+  fromBoolLike = (0 /=)
+
+instance BoolLike (Maybe a) where
+  fromBoolLike Nothing  = False
+  fromBoolLike (Just _) = True
+
+instance BoolLike Bool where
+  fromBoolLike x = x
