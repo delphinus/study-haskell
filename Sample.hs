@@ -62,3 +62,9 @@ instance BoolLike (Maybe a) where
 
 instance BoolLike Bool where
   fromBoolLike x = x
+
+class Eq a where
+  (==) :: a -> a -> Bool
+  x == y = not (x /= y)
+  (/=) :: a -> a -> Bool
+  x /= y = not (x == y)
