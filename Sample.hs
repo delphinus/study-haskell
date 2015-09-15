@@ -47,3 +47,5 @@ appliedHead :: (t -> [a]) -> t -> Maybe a
 appliedHead f x = case f x of
                     [] -> Nothing
                     a : _ -> Just a
+
+mean' xs = let (res, len) = foldl (\(m, n) x -> (m + x / len, n + 1)) (0, 0) xs in res
