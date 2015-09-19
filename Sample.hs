@@ -68,3 +68,7 @@ class Eq a where
   x == y = not (x /= y)
   (/=) :: a -> a -> Bool
   x /= y = not (x == y)
+
+primes :: [Integer]
+primes = f [2..] where
+  f (p : ns) = p : f (filter ((/= 0) . (`mod` p)) ns)
